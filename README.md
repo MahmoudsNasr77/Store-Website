@@ -34,5 +34,3 @@ This is a backend e-commerce API project built using **Django** and **Django RES
 
 ---
 
-## 📁 Project Structure
-
