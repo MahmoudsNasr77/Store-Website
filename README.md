@@ -9,7 +9,9 @@ This is a backend e-commerce API project built using **Django** and **Django RES
 - [Django](https://www.djangoproject.com/)
 - [Django REST Framework](https://www.django-rest-framework.org/)
 - SQLite (default, changeable)
-- Python 3.x
+- HTML5
+- CSS3
+- JavaScript (vanilla)
 
 ---
 
