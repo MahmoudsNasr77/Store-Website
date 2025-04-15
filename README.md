@@ -26,7 +26,7 @@ This is a backend e-commerce API project built using **Django** and **Django RES
 
 ## 📸 Screenshot
 
-![API Screenshot](images/screenshot.png)
+![Screenshot](images/screenshot.png)
 
 > ℹ️ Replace the image with a real screenshot of your API or admin panel.
 
