@@ -1,0 +1,173 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-11 21:06+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\templates\about.html:9 .\templates\base.html:50
+msgid "من نحن"
+msgstr "About Us"
+
+#: .\templates\about.html:11
+msgid ""
+"نحن شركة تقدم منتجات عالية الجودة في مجال ...  نحن ملتزمون بتقديم أفضل خدمة "
+"للعملاء وتوفير منتجات مبتكرة تلبي احتياجاتهم."
+msgstr ""
+
+#: .\templates\about.html:14
+msgid ""
+"هدفنا هو تحسين تجربة التسوق عبر الإنترنت وتقديم أفضل تجربة للعملاء مع خدمة "
+"دعم متميزة وخيارات دفع مرنة."
+msgstr "Our goal is to improve the online shopping experience and provide the best experience for customers with excellent customer support and flexible payment options."
+
+#: .\templates\about.html:16
+#, fuzzy
+#| msgid "المنتجات"
+msgid "استكشاف المنتجات"
+msgstr "Products"
+
+#: .\templates\about.html:27
+msgid "فريقنا"
+msgstr "Our Team"
+
+#: .\templates\about.html:33 .\templates\about.html:42
+#: .\templates\about.html:51
+msgid "اسم الشخص"
+msgstr "Person name"
+
+#: .\templates\about.html:34 .\templates\about.html:43
+#: .\templates\about.html:52
+msgid "دور الشخص في الفريق"
+msgstr "role"
+
+#: .\templates\base.html:48 .\templates\index.html:5
+#: .\templates\products.html:5
+msgid "الرئيسية"
+msgstr "Home"
+
+#: .\templates\base.html:49
+msgid "المنتجات"
+msgstr "Products"
+
+#: .\templates\base.html:61
+msgid "2025 منتجك. جميع الحقوق محفوظة."
+msgstr "2025 Your Product. All rights reserved."
+
+#: .\templates\index.html:14
+msgid "Slide 1"
+msgstr "الشريحة 1"
+
+#: .\templates\index.html:17
+msgid "Slide 2"
+msgstr "الشريحة 2"
+
+#: .\templates\index.html:20
+msgid "Slide 3"
+msgstr "الشريحة 3"
+
+#: .\templates\index.html:26
+msgid "Previous"
+msgstr "السابق"
+
+#: .\templates\index.html:30
+msgid "Next"
+msgstr "التالي"
+
+#: .\templates\index.html:43 .\templates\products.html:14
+#, fuzzy
+#| msgid "المنتجات"
+msgid "بحث عن المنتجات"
+msgstr "Products"
+
+#: .\templates\index.html:45 .\templates\products.html:16
+#, fuzzy
+#| msgid "المنتجات"
+msgid "اسم المنتج"
+msgstr "Products"
+
+#: .\templates\index.html:46 .\templates\products.html:17
+msgid "السعر"
+msgstr "Price"
+
+#: .\templates\index.html:47 .\templates\products.html:18
+msgid "بحث"
+msgstr "Search"
+
+#: .\templates\index.html:55 .\templates\products.html:26
+msgid "Sort by:"
+msgstr ""
+
+#: .\templates\index.html:57 .\templates\products.html:28
+msgid "اسم المنتج"
+msgstr "Name"
+
+#: .\templates\index.html:58 .\templates\products.html:29
+msgid "السعر"
+msgstr "Price"
+
+#: .\templates\index.html:59 .\templates\products.html:30
+msgid "الكمية المتاحه"
+msgstr "Stock"
+
+#: .\templates\index.html:61 .\templates\products.html:32
+msgid "رتب"
+msgstr "Sort"
+
+#: .\templates\index.html:77 .\templates\products.html:48
+msgid "لا يوجد منتجات"
+msgstr "No Image Available"
+
+#: .\templates\index.html:83 .\templates\products.html:54
+msgid "الكميه الموجوده"
+msgstr "In Stock"
+
+#: .\templates\index.html:84 .\templates\products.html:55
+#, fuzzy
+#| msgid " عرض التفاصيل"
+msgid "عرض التفاصيل"
+msgstr "Detials "
+
+#: .\templates\index.html:102 .\templates\product_detail.html:11
+#: .\templates\products.html:73
+msgid "No image available"
+msgstr ""
+
+#: .\templates\index.html:106 .\templates\products.html:77
+msgid "Close"
+msgstr ""
+
+#: .\templates\index.html:156 .\templates\products.html:127
+msgid "استكشف واجهة برمجة التطبيقات الخاصة بنا لإدارة المنتجات وعرضها بكفاءة."
+msgstr ""
+
+#: .\templates\index.html:157 .\templates\products.html:128
+#, fuzzy
+#| msgid "المنتجات"
+msgid "عرض المنتجات"
+msgstr "Products"
+
+#: .\templates\product_detail.html:24
+msgid "No category available"
+msgstr ""
+
+#: .\templates\product_detail.html:30
+msgid "Add to Cart"
+msgstr ""
+
+#: .\templates\product_detail.html:31
+msgid "Back to Products"
+msgstr ""

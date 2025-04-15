@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}من نحن{% endblock %}
+
+
+{% load static %}
+
+{% block content %}
+<section class="about-us py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="display-4">من نحن</h2>
+                <p class="lead">
+                    نحن شركة تقدم منتجات عالية الجودة في مجال ...  نحن ملتزمون بتقديم أفضل خدمة للعملاء وتوفير منتجات مبتكرة تلبي احتياجاتهم.
+                </p>
+                <p>
+                    هدفنا هو تحسين تجربة التسوق عبر الإنترنت وتقديم أفضل تجربة للعملاء مع خدمة دعم متميزة وخيارات دفع مرنة.
+                </p>
+                <a href="{% url 'product:contact' %}" class="btn btn-primary btn-lg">تواصل معنا </a>
+            </div>
+            <div class="col-md-6">
+                <img src="{% static 'images/us.jpg' %}" alt="About Us" class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="team py-5">
+    <div class="container text-center">
+        <h3>فريقنا</h3>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/team_1.jpg' %}" class="card-img-top" alt="Team Member 1">
+                    <div class="card-body">
+                        <h5 class="card-title">أحمد سعيد</h5>
+                        <p class="card-text">مدير المشروع</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/team_2.jpg' %}" class="card-img-top" alt="Team Member 2">
+                    <div class="card-body">
+                        <h5 class="card-title">محمود علي</h5>
+                        <p class="card-text">مهندس برمجيات</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{% static 'images/team_3.jpg' %}" class="card-img-top" alt="Team Member 3">
+                    <div class="card-body">
+                        <h5 class="card-title">محمد جمال</h5>
+                        <p class="card-text">مسؤول التسويق</p>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</section>
+{% endblock %}

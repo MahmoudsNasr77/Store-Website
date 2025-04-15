@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}اضافة منتج{% endblock %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">اضافة منتج</h2>
+    <form method="POST" enctype="multipart/form-data" class="p-4 border rounded shadow bg-light" id="addProductForm">
+        {% csrf_token %}
+        
+        <!-- Product Name -->
+        <div class="mb-3">
+            <label for="name" class="form-label">اسم المنتج</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+
+        <!-- Product Description -->
+        <div class="mb-3">
+            <label for="description" class="form-label">وصف المنتج</label>
+            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+        </div>
+
+        <!-- Product Price -->
+        <div class="mb-3">
+            <label for="price" class="form-label">سعر المنتج</label>
+            <input type="number" step="0.01" class="form-control" id="price" name="price" required>
+        </div>
+
+        <!-- Product Stock -->
+        <div class="mb-3">
+            <label for="stock" class="form-label">عدد المنتجات في المخزن</label>
+            <input type="number" class="form-control" id="stock" name="stock" required>
+        </div>
+
+        <!-- Product Image -->
+        <div class="mb-3">
+            <label for="image" class="form-label">صورة المنتج</label>
+            <input type="file" class="form-control" id="image" name="image" accept="image/*">
+        </div>
+
+        <!-- Product Slug (if you want to make it manually) -->
+ 
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-success" id="add">إضافة المنتج</button>
+    </form>
+</div>
+<script src="{% static 'js/addproductv1.js' %}"></script>
+{% endblock %}

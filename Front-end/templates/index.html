@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}الرئيسية{% endblock %}
+
+{% block content %}
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS Bundle (includes Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<header class="container-fluid bg-light text-center py-0" style="height: 100vh;">
+    <div id="productCarousel" class="carousel slide" data-bs-ride="carousel" style="height: 100%;">
+        <div class="carousel-inner" style="height: 100%;">
+            <div class="carousel-item active">
+                <img src="{% static 'images/slide2.jpg' %}" class="d-block w-100" alt="الشريحة 1">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/slide2.jpg' %}" class="d-block w-100" alt="الشريحة 2">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/slide3.jpg' %}" class="d-block w-100" alt="الشريحة 3">
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">السابق</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">التالي</span>
+        </button>
+
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+            <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="2"></button>
+        </div>
+    </div>
+</header>
+
+<section class="search-section mt-5">
+    <div class="container">
+        <h2 class="text-center mb-4">بحث عن المنتجات</h2>
+        <form method="get" action="{% url 'product:index' %}" class="d-flex justify-content-center">
+            <input type="text" name="name" placeholder="اسم المنتج" value="{{ name }}" class="form-control me-2">
+            <input type="number" name="price" placeholder="السعر" value="{{ price }}" class="form-control me-2">
+            <button type="submit" class="btn btn-primary">بحث</button>
+        </form>
+    </div>
+</section>
+
+<section class="sort-section mt-4">
+    <div class="container">
+        <form method="get" action="{% url 'product:index' %}" class="d-flex justify-content-center">
+            <select name="order_by" id="order_by" class="form-select w-auto">
+                <option value="name" {% if request.GET.order_by == 'name' %}selected{% endif %}>الاسم</option>
+                <option value="price" {% if request.GET.order_by == 'price' %}selected{% endif %}>السعر</option>
+                <option value="stock" {% if request.GET.order_by == 'stock' %}selected{% endif %}>المخزون</option>
+            </select>
+            <button type="submit" class="btn btn-primary ms-2">ترتيب</button>
+        </form>
+    </div>
+</section>
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Loop through products -->
+        <!-- Product Image Section -->
+        {% for product in products %}
+        <div class="col-md-4 col-sm-6 mb-4">
+            <div class="card h-100">
+                {% if product.image %}
+                    <!-- Thumbnail Image with Click Event -->
+                    <img src="{{ product.image }}" class="card-img-top product-image" alt="{{ product.name }}" data-bs-toggle="modal" data-bs-target="#imageModal{{ product.id }}">
+                {% else %}
+                    <img src="{% static 'images/placeholder.jpg' %}" class="card-img-top product-image" alt="لا توجد صورة" data-bs-toggle="modal" data-bs-target="#imageModal{{ product.id }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    <p class="card-text text-success">{{ product.price }} $</p>
+                    <p class="card-text">{{ product.stock }} في المخزون</p>
+                    <a href="{% url 'product:product_detail' slug=product.slug %}" class="btn btn-primary">عرض التفاصيل</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <!-- Modal for Product Image -->
+        {% for product in products %}
+        <div class="modal fade" id="imageModal{{ product.id }}" tabindex="-1" aria-labelledby="imageModalLabel{{ product.id }}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="imageModalLabel{{ product.id }}">{{ product.name }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        {% if product.image %}
+                            <img src="{{ product.image }}" class="img-fluid" alt="{{ product.name }}">
+                        {% else %}
+                            <p>لا توجد صورة متاحة</p>
+                        {% endif %}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+    <!-- Pagination Section -->
+    <div class="pagination-wrapper text-center">
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if prev_page %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1{% if name %}&name={{ name }}{% endif %}{% if price %}&price={{ price }}{% endif %}{% if order_by %}&order_by={{ order_by }}{% endif %}" aria-label="First">
+                            <span aria-hidden="true">&laquo;&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ current_page|add:'-1' }}{% if name %}&name={{ name }}{% endif %}{% if price %}&price={{ price }}{% endif %}{% if order_by %}&order_by={{ order_by }}{% endif %}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                {% endif %}
+                
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">{{ current_page }}</span>
+                </li>
+                
+                {% if next_page %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ current_page|add:'1' }}{% if name %}&name={{ name }}{% endif %}{% if price %}&price={{ price }}{% endif %}{% if order_by %}&order_by={{ order_by }}{% endif %}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ current_page|add:'1' }}{% if name %}&name={{ name }}{% endif %}{% if price %}&price={{ price }}{% endif %}{% if order_by %}&order_by={{ order_by }}{% endif %}" aria-label="Last">
+                            <span aria-hidden="true">&raquo;&raquo;</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    
+    
+</div>
+</section>
+
+<main class="mt-4">
+    <p class="text-center">استكشف واجهة برمجة التطبيقات الخاصة بنا لإدارة المنتجات وعرضها بكفاءة.</p>
+    <a href="" class="btn btn-primary mx-auto d-block">عرض المنتجات</a>
+</main>
+
+{% endblock %}

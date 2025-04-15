@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}منتجك{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <script src="{% static 'js/contact.js' %}"></script>
+    <script src="{% static 'js/basev1.js' %}"></script>
+
+    <style>
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: center;
+        }
+        .product-image:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        .product-image:active {
+            transform: scale(1.0);
+            transition: transform 0.1s ease;
+        }
+        @media (max-width: 768px) {
+            .product-image {
+                height: 150px;
+            }
+        }
+    
+        @media (max-width: 480px) {
+            .product-image {
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-primary text-white py-3">
+        <nav class="container navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="#">منتجك</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav"
+                    aria-expanded="false" aria-label="تبديل التنقل">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                <!-- روابط التنقل الرئيسية -->
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'product:index' %}">الرئيسية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'product:product_list' %}">المنتجات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'product:about' %}">من نحن</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'product:contact' %}">تواصل معنا</a></li>
+    
+                    {% if user.is_authenticated and user.is_superuser %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">لوحة التحكم</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">تسجيل الخروج</a></li>
+                    {% endif %}
+                </ul>
+    
+                <!-- تسجيل الدخول / إنشاء حساب -->
+                <div class="d-flex gap-2">
+                    <a href="{% url 'product:add_product' %}" class="btn btn-outline-light d-none" id="addBtn" >إضافة منتج</a>
+                    <a href="#" class="btn btn-outline-light d-none" id="logoutBtn">تسجيل الخروج</a>    
+
+                    <a href="{% url 'product:login' %}" class="btn btn-outline-light" id="loginBtn">تسجيل الدخول</a>
+                     <a href="{% url 'product:signup' %}" class="btn btn-light text-primary" id="signupBtn">إنشاء حساب</a>
+           
+                   
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    
+    
+    <main class="container my-5">
+        {% block content %} 
+        {% endblock %}
+    </main>
+    
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2025 منتجك. جميع الحقوق محفوظة.</p>
+        <!-- Language Switcher is removed, only Arabic content will be displayed -->
+    </footer>
+    <script>
+        
+
+
+
+
+    </script>
+
+    
+</body>
+</html>

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}تسجيل  {% endblock %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">  </h2>
+    <form id="registerForm" class="p-4 border rounded shadow bg-light">
+        <div class="mb-3">
+            <label for="username" class="form-label">اسم السمتخدم</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label"> الايميل</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="phone_number" class="form-label"> رقم الهاتف</label>
+            <input type="phone" class="form-control" id="phone_number" name="phone_number" required>
+        </div>
+        <div class="mb-3">
+            <label for="country" class="form-label">الدولة</label>
+            <select class="form-control" id="country" name="country" required>
+                {% for country_code, country_name in countries_list %}
+                    <option value="{{ country_code }}">{{ country_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="mb-3">
+            <label for="city" class="form-label"> المدينة</label>
+            <input type="text" class="form-control" id="city" name="city" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label"> كلمة السر</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+ 
+        <button type="submit" class="btn btn-success">تسجيل </button>
+        <p id="registerResult" class="mt-3 text-success"></p>
+    </form>
+</div>
+
+<script src="{% static 'js/signupv1.js' %}"></script>
+
+{% endblock %}
